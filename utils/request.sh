@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "success"
-./clik_client "request" "$(hostname -I)"
+./clik_client request $(hostname)

@@ -25,10 +25,6 @@ do
 			./request.sh
 	
 __HERE
-			
-			#원격 실행결과와비교 후 출력
-		
-			echo "${REMOTE_PREFIX}${i} - $?" >> mylog
 		fi
 	fi
 	((i++))

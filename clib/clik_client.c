@@ -8,7 +8,7 @@
 #include<unistd.h>
 #include<fcntl.h>
 
-#define PORTNUM 18080
+#define PORTNUM 18081
 #define BUF_SIZE 256
 int main(int argc,char** argv)
 {
@@ -44,7 +44,7 @@ int main(int argc,char** argv)
         perror("send");
         exit(1);
     }
-    
+    printf("debug :request ended\n\n");
     /*while(strcmp("exit\0",buf)!=0)
     {
         printf(">>");

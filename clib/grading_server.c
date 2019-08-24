@@ -8,15 +8,15 @@
 #include<unistd.h>
 #include<fcntl.h>
 
-#define PORTNUM 18080
-#define BUF_SIZE 32
+#define PORTNUM 18081
+#define BUF_SIZE 64
 
 int cntReady(int* , struct sockaddr_in* );	//connection Ready
 
 int main()
 {
 	char buf[BUF_SIZE];
-	char cmdbuf[BUF_SIZE];
+	char cmdbuf[256];
 	char* tmpbuf;
 	char ipaddr[BUF_SIZE];
 	char hostname[BUF_SIZE];
@@ -56,15 +56,19 @@ int main()
 						tmpbuf=strtok(NULL," ");
 						sprintf(hostname,"%s",tmpbuf);
 					        sprintf(cmdbuf,"~/clik/utils/response.sh %s",ipaddr);
+						printf("debug: hostname %s\n\n",hostname);
+
 						system(cmdbuf);
 					
 					}else if(strcmp(tmpbuf,"result")==0){
 						tmpbuf=strtok(NULL," ");
-						sprintf(cmdbuf,"echo '$(date) %s' > ../data/%s.log",tmpbuf,hostname);
+						printf("hostname : %s",hostname);
+						sprintf(cmdbuf,"echo $(date) __%s__ > ~/clik/data/%s.log",tmpbuf,hostname);
+						printf("debug cmdbuf - %s\n",cmdbuf);
 						system(cmdbuf);
 						break;
 					}else{
-						printf("Wrong request: %s",tmpbuf);
+						printf("Wrong request: %s\n",tmpbuf);
 						break;
 					}
 				}
