@@ -15,7 +15,7 @@ done
 ## result파일, random파일, testscript 전송!
 
 echo "---- test script, result_values >> ${1},defualt path" 
-scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ~/clik/utils/result_values ~/clik/utils/random_values ~/clik/utils/testscript.sh ${USER_NAME}@${1}:~/
+scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ~/CLIK/utils/result_values ~/CLIK/utils/random_values ~/CLIK/utils/testscript.sh ${USER_NAME}@${1}:~/
 
 ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY}  ${USER_NAME}@${1} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
 	./testscript.sh

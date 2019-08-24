@@ -39,39 +39,36 @@ int main()
 			exit(1);
 		}
 		
-		printf("new client accepted\n");
 
 		sprintf(ipaddr,"%s",inet_ntoa(cli.sin_addr));
 		switch(pid=fork()){
 
 			case 0:	
 				close(sd);
-				while(recv(ns,buf,BUF_SIZE,0)!=-1){
-						
-					printf("client accepted IP: %s\n",ipaddr);
-					tmpbuf=strtok(buf," ");
-					// 1_request message (request hostname)
-					// 2_result message (result ipaddr)
-					if(strcmp(tmpbuf,"request")==0){
-						tmpbuf=strtok(NULL," ");
-						sprintf(hostname,"%s",tmpbuf);
-					        sprintf(cmdbuf,"~/clik/utils/response.sh %s",ipaddr);
-						printf("debug: hostname %s\n\n",hostname);
-
-						system(cmdbuf);
-					
-					}else if(strcmp(tmpbuf,"result")==0){
-						tmpbuf=strtok(NULL," ");
-						printf("hostname : %s",hostname);
-						sprintf(cmdbuf,"echo $(date) __%s__ > ~/clik/data/%s.log",tmpbuf,hostname);
-						printf("debug cmdbuf - %s\n",cmdbuf);
-						system(cmdbuf);
-						break;
-					}else{
-						printf("Wrong request: %s\n",tmpbuf);
-						break;
-					}
+				if(1!=recv(ns,buf,BUF_SIZE,0)){
+					perror("recv");
 				}
+				printf("client accepted IP:%s requset message:%s\n",ipaddr,buf);
+				tmpbuf=strtok(buf," ");
+				// 1_request message (request hostname)
+				// 2_result message (result ipaddr)
+				if(strcmp(tmpbuf,"request")==0){
+					tmpbuf=strtok(NULL," ");
+					sprintf(hostname,"%s",tmpbuf);
+				        sprintf(cmdbuf,"~/CLIK/utils/response.sh %s",ipaddr);
+					printf("debug: hostname %s\n\n",hostname);
+					system(cmdbuf);
+				
+				}else if(strcmp(tmpbuf,"result")==0){
+					printf("this is about response!!\n\n");
+					tmpbuf=strtok(NULL," ");
+					sprintf(cmdbuf,"echo $(date) __%s__ > ~/CLIK/data/%s.log",tmpbuf,tmpbuf);
+					printf("debug cmdbuf - %s\n",cmdbuf);
+					system(cmdbuf);
+				}else{
+					printf("Wrong request: %s\n",tmpbuf);
+				}
+			
 			
 		}		
 		close(ns);	
