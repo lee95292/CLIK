@@ -19,7 +19,7 @@ scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ~/CLIK/utils/result_values ~/CLIK/utils/ra
 
 ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY}  ${USER_NAME}@${1} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
 	./testscript.sh
-	./clik_client "result" $?
+	./clik_client result $?
 	rm ./testscript.sh
 __HERE
 

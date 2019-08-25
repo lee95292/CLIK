@@ -7,6 +7,7 @@
 #include<string.h>
 #include<unistd.h>
 #include<fcntl.h>
+#include<wait.h>
 
 #define PORTNUM 18081
 #define BUF_SIZE 64
@@ -58,9 +59,7 @@ int main()
 				        sprintf(cmdbuf,"~/CLIK/utils/response.sh %s",ipaddr);
 					printf("debug: hostname %s\n\n",hostname);
 					system(cmdbuf);
-				
 				}else if(strcmp(tmpbuf,"result")==0){
-					printf("this is about response!!\n\n");
 					tmpbuf=strtok(NULL," ");
 					sprintf(cmdbuf,"echo $(date) __%s__ > ~/CLIK/data/%s.log",tmpbuf,tmpbuf);
 					printf("debug cmdbuf - %s\n",cmdbuf);
@@ -68,8 +67,7 @@ int main()
 				}else{
 					printf("Wrong request: %s\n",tmpbuf);
 				}
-			
-			
+				exit(0);
 		}		
 		close(ns);	
 	}
