@@ -1,13 +1,12 @@
 #!/bin/bash
 RESULT_FILE="result_values"
-INPUT_FILE="random_values"
+RANDOM_FILE="random_values"
 input=()
 result=()
 count=0;
 rescount=0;
 correct=0;
 
-cat ${RANDOM_FILE}
 cat ${RANDOM_FILE} | while read line
 do
 	input+=${line}
@@ -19,7 +18,8 @@ do
 	result+=${line}
 	((rescount++))
 done
-
+input=($(cat ${RANDOM_FILE}))
+result=($(cat ${RESULT_FILE}))
 ./paste;./paste;./paste;./paste;./paste
 
 
@@ -60,5 +60,5 @@ fi
 ((rescount++))
 
 echo ${correct} / ${rescount}
-exit ${coreect}
+exit ${correct}
 

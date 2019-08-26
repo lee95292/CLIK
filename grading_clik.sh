@@ -15,7 +15,7 @@ while [ ${i} -lt 256 ];
 do
 	echo ---checking ${REMOTE_PREFIX}${i}----
 	# 쉘 체크: 활성화된 계정인지 체크
-	nc -z ${REMOTE_PREFIX}${i} ${SHELL_PORT}
+	nc -z ${REMOTE_PREFIX}${i} ${SHELL_PORT} 
 	if [ $? -eq 0 ]		
 	then 
 		#clik_client 전송
@@ -24,9 +24,8 @@ do
 		#With_ T Option
 		if [ "${EXAMINATION}" -eq 1 ] 
 		then
-			ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY} -o "StrictHostKeyChecking = yes" ${USER_NAME}@${REMOTE_PREFIX}${i} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
-			./request.sh
-	
+			ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY} -o "StrictHostKeyChecking = no" ${USER_NAME}@${REMOTE_PREFIX}${i} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE'
+		./request.sh
 __HERE
 		fi
 	fi
