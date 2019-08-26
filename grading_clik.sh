@@ -13,15 +13,18 @@ SHELL_PORT=7777
 i=2
 while [ ${i} -lt 256 ];
 do
-	if [ ${i} -eq 120 ]		# os mklee 계정 테스트코드
+	echo ---checking ${REMOTE_PREFIX}${i}----
+	# 쉘 체크: 활성화된 계정인지 체크
+	nc -z ${REMOTE_PREFIX}${i} ${SHELL_PORT}
+	if [ $? -eq 0 ]		
 	then 
 		#clik_client 전송
-		scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ./clib/clik_client ./utils/request.sh  ${USER_NAME}@${REMOTE_PREFIX}${i}:~/
+		scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ./utils/request.sh  ${USER_NAME}@${REMOTE_PREFIX}${i}:~/
 		
 		#With_ T Option
 		if [ "${EXAMINATION}" -eq 1 ] 
 		then
-			ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY}  ${USER_NAME}@${REMOTE_PREFIX}${i} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
+			ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY} -o "StrictHostKeyChecking = yes" ${USER_NAME}@${REMOTE_PREFIX}${i} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
 			./request.sh
 	
 __HERE

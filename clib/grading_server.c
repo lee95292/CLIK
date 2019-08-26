@@ -52,16 +52,19 @@ int main()
 				printf("client accepted IP:%s requset message:%s\n",ipaddr,buf);
 				tmpbuf=strtok(buf," ");
 				// 1_request message (request hostname)
-				// 2_result message (result ipaddr)
+				// 2_result message (result correct hostname)
 				if(strcmp(tmpbuf,"request")==0){
 					tmpbuf=strtok(NULL," ");
 					sprintf(hostname,"%s",tmpbuf);
 				        sprintf(cmdbuf,"~/CLIK/utils/response.sh %s",ipaddr);
-					printf("debug: hostname %s\n\n",hostname);
+					printf("debuf cmdbuf: %s\n",cmdbuf);
 					system(cmdbuf);
 				}else if(strcmp(tmpbuf,"result")==0){
-					tmpbuf=strtok(NULL," ");
-					sprintf(cmdbuf,"echo $(date) __%s__ > ~/CLIK/data/%s.log",tmpbuf,tmpbuf);
+					tmpbuf=strtok(NULL," ");		//correct 분리
+					sprintf(cmdbuf,"echo $(date) __%s__ >>",tmpbuf);
+	
+					tmpbuf =strtok(NULL," ");		// hostname 분리
+					sprintf(cmdbuf,"%s ~/CLIK/data/%s",cmdbuf,tmpbuf);
 					printf("debug cmdbuf - %s\n",cmdbuf);
 					system(cmdbuf);
 				}else{

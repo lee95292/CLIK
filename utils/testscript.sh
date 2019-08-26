@@ -1,59 +1,64 @@
-#!/bin/bash 
-RANDOM_FILE="random_values"
+#!/bin/bash
 RESULT_FILE="result_values"
+INPUT_FILE="random_values"
 input=()
-start=0		# 실행간 구분용
-count=0		# input배열의 크기
+result=()
+count=0;
+rescount=0;
+correct=0;
 
-
-## result파일 초기화
-echo -n > "${RESULT_FILE}"
-
-##input random으로 초기화
-cat "${RANDOM_FILE}" | while read line
+cat ${RANDOM_FILE}
+cat ${RANDOM_FILE} | while read line
 do
 	input+=${line}
 	((count++))
 done
 
+cat ${RESULT_FILE} | while read line
+do
+	result+=${line}
+	((rescount++))
+done
+
 ./paste;./paste;./paste;./paste;./paste
+
 
 for ((i=0;i<6;i++))
 do
 	./copy ${input[${i}]}
-	echo $? >> "${RESULT_FILE}"
-	((start++))
+	if [ $? = "${result[${rescount}]}" ] 
+	then
+		((correct++))
+	fi
+	((rescount++))	
 done
-
-for((i=0;i<7;i++))
+for ((i=0;i<7;i++))
 do
-	./paste
-	echo $? >> "${RESULT_FILE}"
-	((start++))
+	./paste ${input[${i}]}
+	if [ $? = "${result[${rescount}]}" ] 
+	then
+		((correct++))
+	fi
+	((rescount++))	
 done
 
-for ((i=6;i<13;i++))
+for ((i=0;i<13;i++))
 do
 	./copy ${input[${i}]}
-	echo $? >> "${RESULT_FILE}"
-	((start++))
+	if [ $? = "${result[${rescount}]}" ] 
+	then
+		((correct++))
+	fi
+	((rescount++))	
 done
 
 ./copy -1
-echo $? >> "${RESULT_FILE}"
-((start++))
+if [ $? = "${result[${rescount}]}" ] 
+then
+	((correct++))
+fi
+((rescount++))
 
-correct=0
-for((i=0;i<${start};i++))
-do
-	if [ ${answer[${i}]} -eq ${result[${i}]} ]
-       	then 
-		((correct++)) 
-	fi
-done
+echo ${correct} / ${rescount}
+exit ${coreect}
 
-echo ""
-echo "----result ${correct} / ${start}----"
-
-
-exit ${correct}
