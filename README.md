@@ -24,7 +24,7 @@
 ```
 * 클라이언트 인스턴스를 대상으로 채점을 수행하고 결과를 수집합니다.
 ```
-./clikSetAndStart -t 
+./clikSetAndStart.sh -t 
 ```
 4. CLIK/data 폴더에서 인스턴스 이름별로 정리된 데이터를 확인합니다.
 .
