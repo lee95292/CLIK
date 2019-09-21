@@ -21,6 +21,6 @@ echo \n $(pwd)
 scp -P ${SHELL_PORT} -i ${PUBLIC_KEY} ~/CLIK/utils/result_values ~/CLIK/utils/random_values ~/CLIK/utils/testscript.sh ${USER_NAME}@${1}:~/
 
 ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY}  ${USER_NAME}@${1} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE' 
-	~/testscript.sh;echo result $? $(hostname)|nc 192.168.0.7 18081;rm ~/testscript.sh
+	~/testscript.sh;echo result $? $(hostname)|nc 192.168.0.254 18081;rm ~/testscript.sh
 __HERE
 
