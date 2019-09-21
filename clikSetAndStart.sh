@@ -16,7 +16,7 @@ TARGET_NAME="copy"
 EXAMINATION=0
 GRADING_SERVER=0
 
-PARAM="d:n:ht";
+PARAM="ght";
 
 while getopts $PARAM opt
 do
