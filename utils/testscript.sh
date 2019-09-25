@@ -1,6 +1,5 @@
 #!/bin/bash
-RESULT_FILE="result_values"
-RANDOM_FILE="random_values"
+source ~/CLIK/config.ini
 input=()
 result=()
 count=0;

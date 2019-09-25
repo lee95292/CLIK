@@ -1,22 +1,35 @@
 #!/bin/bash
 
-# TODO: 안쓰는 파라미터 정리하기. (3,4번 파라미터)
-
 ## parameter mapping ##
-function usage {
-	echo "Usage : ${0} [options] gradingFile  ";
-	echo "Options:";
-	echo "	-t  Examinate Total grading and capture the result";
-	echo "  -s  Start Grading Server"
-	echo "	-h  Help(usage)";
-}
-
 TARGET_PATH="~/osAsgn01/a01/"
-TARGET_NAME="copy"
 EXAMINATION=0
 GRADING_SERVER=0
 
-PARAM="ght";
+function usage {
+	echo -e "\n Usage : ${0} [options] gradingFile  \n";
+	echo " Options:";
+	echo "	-t  Examinate Total grading and capture the result";
+	echo "        -s  Start Grading Server"
+	echo "	-h  Help(usage)";
+}
+
+function printResult {
+	if [ $2 -eq 1 ] 
+	then
+		echo "      $1		-TRUE"
+	else
+		echo "      $1		-FALSE"
+	fi
+} 
+
+
+if [ -z $1 ]
+then
+	usage;
+	exit 1;
+fi
+
+PARAM="sht";
 
 while getopts $PARAM opt
 do
@@ -25,7 +38,7 @@ do
 			EXAMINATION=1
 			;;
 		
-		g)
+		s)
 			GRADING_SERVER=1
 			;;
 		h)
@@ -36,18 +49,15 @@ do
 done
 
 ## grding script의 실행가능여부와 존재여부 체크하는 부분!!! 넣어주기
-args=("$@")
-NUM_PARAM=${#}
-((NUM_PARAM--))
-echo "setting result - "
-if [ ${EXAMINATION} -eq 1 ]
-then 
-	echo "  EXAMINATION	    - TRUE"
-else
-	echo "  EXAMINATION	    - FALSE"
-fi
+#test
 
+echo -e "\n setting result : \n"
+
+printResult Student_exmaination  ${EXAMINATION}
+printResult Grading_server_start ${GRADING_SERVER}
+
+echo -e "\n"
 
 export EXAMINATION=${EXAMINATION} GRADING_SERVER=${GRADING_SERVER}
-./grading_clik.sh 16
+./grading_clik.sh
 

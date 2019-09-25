@@ -1,6 +1,6 @@
 #!/bin/bash 
-RANDOM_FILE="random_values"
-RESULT_FILE="result_values"
+source ~/CLIK/config.ini
+
 input=()
 start=0		# 실행간 구분용
 count=0		# input배열의 크기

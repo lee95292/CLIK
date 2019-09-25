@@ -1,5 +1,7 @@
 #!/bin/bash
+# Param Mapping / $1 -Full path of grading script
+
 CLIK_ADDR="192.168.0.254"
 PORT="18081"
 
-echo request $(hostname)|nc ${CLIK_ADDR} ${PORT}
+echo request $(hostname) $1 |nc ${CLIK_ADDR} ${PORT}
