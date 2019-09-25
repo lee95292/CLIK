@@ -62,7 +62,7 @@ int main()
 				}else if(strcmp(tmpbuf,"result")==0){
 					tmpbuf=strtok(NULL," ");		//correct 분리
 					
-					sprintf(cmdbuf,"echo $(date +'%%T %%m-%%d-%%Y') %s >>",tmpbuf);
+					sprintf(cmdbuf,"echo $(date +'%%T_%%m-%%d-%%Y') %s >>",tmpbuf);
 	
 					tmpbuf =strtok(NULL," ");		// hostname 분리
 					sprintf(cmdbuf,"%s ~/CLIK/data/%s",cmdbuf,tmpbuf);
