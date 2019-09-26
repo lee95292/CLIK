@@ -16,7 +16,7 @@ do
 	((count++))
 done
 
-./paste;./paste;./paste;./paste;./paste
+./paste; ./paste ; ./paste ; ./paste ; ./paste
 
 for ((i=0;i<6;i++))
 do
