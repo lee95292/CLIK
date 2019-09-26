@@ -6,7 +6,7 @@ EXAMINATION=0
 GRADING_SERVER=0
 
 function usage {
-	echo -e "\n Usage : ${0} [options] gradingFile  \n";
+	echo -e "\n Usage : ${0} [options] Assignment name  \n";
 	echo " Options:";
 	echo "	-t  Examinate Total grading and capture the result";
 	echo "        -s  Start Grading Server"
