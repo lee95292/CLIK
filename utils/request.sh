@@ -1,5 +1,5 @@
 #!/bin/bash
-# Param Mapping / $1 -Full path of grading script
+# Param Mapping / $1 - Assignment number
 
 CLIK_ADDR="192.168.0.254"
 PORT="18081"
