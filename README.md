@@ -12,7 +12,7 @@
 
  Options:
 	-t  Examinate Total grading and capture the result
-  -s  Start Grading Server
+  	-s  Start Grading Server
 	-h  Help(usage)
 
 ```
