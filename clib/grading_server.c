@@ -49,23 +49,30 @@ int main()
 				if(1!=recv(ns,buf,BUF_SIZE,0)){
 					perror("recv");
 				}
-				printf("client accepted IP:%s requset message:%s\n",ipaddr,buf);
+				printf("client accepted IP:%s requset message:%s\n\n",ipaddr,buf);
 				tmpbuf=strtok(buf," ");
-				// 1_request message (request hostname)
-				// 2_result message (result correct hostname)
+				// 1_request message (request hostname AssignmentNumber)
+				// 2_result message (result correct hostname AssignmentNumber)
 				if(strcmp(tmpbuf,"request")==0){
-					tmpbuf=strtok(NULL," ");
+					tmpbuf=strtok(NULL," ");	//hostname 분리				
 					sprintf(hostname,"%s",tmpbuf);
 				        sprintf(cmdbuf,"~/CLIK/utils/response.sh %s",ipaddr);
-					printf("debuf cmdbuf: %s\n",cmdbuf);
+
+					tmpbuf=strtok(NULL," ");
+					sprintf(cmdbuf,"%s %s",cmdbuf,tmpbuf);
+					printf("Debug: cmdbuf: %s\n",cmdbuf);
+
 					system(cmdbuf);
 				}else if(strcmp(tmpbuf,"result")==0){
 					tmpbuf=strtok(NULL," ");		//correct 분리
-					
-					sprintf(cmdbuf,"echo %s $(date +'%%T_%%m-%%d-%%Y') %s >>",ipaddr,tmpbuf);
-	
+					sprintf(cmdbuf,"~/CLIK/data/processResult.sh %s %s",ipaddr,tmpbuf);
+
 					tmpbuf =strtok(NULL," ");		// hostname 분리
-					sprintf(cmdbuf,"%s ~/CLIK/data/%s",cmdbuf,tmpbuf);
+					sprintf(cmdbuf,"%s %s",cmdbuf,tmpbuf);
+
+					tmpbuf=strtok(NULL," ");		//AssignmentNumber 분리
+					sprintf(cmdbuf,"%s %s",cmdbuf,tmpbuf);
+
 					printf("debug cmdbuf - %s\n",cmdbuf);
 					system(cmdbuf);
 				}else{

@@ -1,4 +1,5 @@
 #!/bin/bash 
+## Client와 비교할 ResultFile 만듦
 source ~/CLIK/config.ini
 
 input=()

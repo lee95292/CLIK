@@ -21,7 +21,7 @@ do
 		if [ "${EXAMINATION}" -eq 1 ] 
 		then
 			ssh -p ${SHELL_PORT} -i ${PUBLIC_KEY} -o "StrictHostKeyChecking = no" ${USER_NAME}@${CLIENT_REMOTE_PREFIX}${i} /bin/bash -s ${GRADE_SCRIPT} <<'__HERE'
-		./request.sh
+		./request.sh req
 __HERE
 		fi
 	fi
