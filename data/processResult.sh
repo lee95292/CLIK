@@ -8,7 +8,7 @@ source ~/CLIK/config.ini
 
 RESULT=Fail
 
-if [ $2 > 10 ]
+if [ $2 -ge 10 ]
 then
 	RESULT=Pass
 fi
