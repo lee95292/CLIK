@@ -1,4 +1,8 @@
 #!/bin/bash
+# Description - 
+# [CLIK/clib/gradingServer.c] 에서 수행하는 코드.
+# 아래 파라미터들 통해 [CLIK/data/*.csv] 파일 생성 또는 기존 파일에 채점 데이터 추가
+
 IPADDR=$1
 CORRECT=$2
 HOSTNAME=$3

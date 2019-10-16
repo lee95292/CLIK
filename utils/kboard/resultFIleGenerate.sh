@@ -1,5 +1,11 @@
 #!/bin/bash 
-## Client와 비교할 ResultFile 만듦
+# Description - 
+# 서버에서 정답 표본을 생성한다. 
+# Response.sh에 의해 생성된 RandomFile의 난수를 입력으로 하여 정답 표본을 생성한다.
+
+# TODO : kboard/Data 폴더에 random,result  IP별로 분류하는 로직 (For 병렬처리..)
+# TODO : (생각해보기) Testscript와 동일화 // 과제 하나당 생성할 스크립트가 너무 많음
+
 source ~/CLIK/config.ini
 
 input=()

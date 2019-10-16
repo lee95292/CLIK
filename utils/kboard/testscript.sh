@@ -1,4 +1,7 @@
 #!/bin/bash
+# Description -
+# response.sh를 통해 클라이언트 사이드에서 채점을 수행하는 스크립트
+
 RESULT_FILE="result_values"
 RANDOM_FILE="random_values"
 

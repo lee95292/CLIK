@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ## parameter mapping ##
 source config.ini
 

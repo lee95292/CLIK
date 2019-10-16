@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Description -
+# For data visualization test
 dir=~/CLIK/data
 
 for data in $dir/*.csv
