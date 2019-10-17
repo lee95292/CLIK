@@ -8,13 +8,11 @@ RANDOM_FILE="random_values_$(hostname -I)"
 correct=0;
 
 input=($(cat ${RANDOM_FILE}))
-count=${#RANDOM_FILE[*]}
-
 result=($(cat ${RESULT_FILE}))
-rescount=${#RESULT_FILE[*]}
+rescount=0
 ./paste;./paste;./paste;./paste;./paste
 
-
+# Debug Script.
 for ((i=0;i<6;i++))
 do
 	./copy ${input[${i}]}
@@ -24,7 +22,8 @@ do
 	fi
 	((rescount++))	
 done
-for ((i=0;i<7;i++))
+
+for ((i=${rescount};i<13;i++))
 do
 	./paste ${input[${i}]}
 	if [ $? = "${result[${rescount}]}" ] 
@@ -34,7 +33,7 @@ do
 	((rescount++))	
 done
 
-for ((i=0;i<13;i++))
+for ((i=${rescount};i<=18;i++))
 do
 	./copy ${input[${i}]}
 	if [ $? = "${result[${rescount}]}" ] 
@@ -51,6 +50,6 @@ then
 fi
 ((rescount++))
 
-echo ${correct} / ${rescount}
+echo result : ${correct} / ${rescount}
 exit ${correct}
 
