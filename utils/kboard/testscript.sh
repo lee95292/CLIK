@@ -2,28 +2,16 @@
 # Description -
 # response.sh를 통해 클라이언트 사이드에서 채점을 수행하는 스크립트
 
-RESULT_FILE="result_values"
-RANDOM_FILE="random_values"
+RESULT_FILE="result_values_$(hostname -I)"
+RANDOM_FILE="random_values_$(hostname -I)"
 
-input=()
-result=()
-count=0;
-rescount=0;
 correct=0;
 
-cat ${RANDOM_FILE} | while read line
-do
-	input+=${line}
-	((count++))
-done
-
-cat ${RESULT_FILE} | while read line
-do
-	result+=${line}
-	((rescount++))
-done
 input=($(cat ${RANDOM_FILE}))
+count=${#RANDOM_FILE[*]}
+
 result=($(cat ${RESULT_FILE}))
+rescount=${#RESULT_FILE[*]}
 ./paste;./paste;./paste;./paste;./paste
 
 

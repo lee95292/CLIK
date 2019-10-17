@@ -3,6 +3,7 @@ source ~/CLIK/config.ini
 
 if [ "${GRADING_SERVER} -eq 1" ]
 then
+	echo -----server start-----
 	./clib/grading_server &
 fi
 
