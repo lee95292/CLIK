@@ -11,8 +11,8 @@
  Usage : ./clikSetAndStart.sh [options] Assignment_name  
 
  Options:
-	-t  Examinate Total grading and capture the result
-  	-s  Start Grading Server
+	-t  Examinate Total grading and capture the result 
+  	-b  Background judge and use parrallel computing (faster operation).
 	-h  Help(usage)
 
 ```
@@ -53,11 +53,13 @@
 
 
 
-### Refactor.. TODO : 업데이트 예정 - (Sep 26~  2019)
+### Refactor,Update.. TODO : 업데이트 예정 - (Sep 26~  2019)
 
-* ~~CLIK시스템 세팅파일 작성 및 시스템 연동하기. -- **First of all**~~ (sep 26 2019)
-* ~~서버 종료스크립트~~ (sep 27 2019)
-* 실행 시 관계 흐름도
-* 클라이언트 실행경로 지정 및 커스터마이징 가능하도록 수정
-* 네트워크 탐색 nohup사용으로 백그라운드 수행
-* 네트워크 범위지정방법 생각하기 ( 168.... ~ 168...255) 또는 (123 ~ 144) 등
+- [x] CLIK시스템 세팅파일 작성 및 시스템 연동하기.  (sep 26 2019)
+- [x] 서버 종료스크립트 (sep 27 2019)
+- [x] 채점모듈 리팩토링 (oct 17 2017)
+- [x] 네트워크 탐색 및 채점 병렬수행 & 동기화문제 해결 (oct 20 2019)
+- [ ] 사용법,문제 추가 방법등을 README에 정리.  
+- [ ] 실행 시 관계 흐름도
+- [ ] 서버코드 리팩토링
+- [ ]  테스트케이스 추가 자동화
