@@ -10,7 +10,7 @@ function usage {
 	echo -e "\n Usage : ${0} [options] Assignment_name  \n";
 	echo " Options:";
 	echo "	-t  Examinate Total grading and capture the result";
-	echo "	-b  Background judge";
+	echo "	-b  Background judge and use parrallel computing (faster operation)";
 	echo "	-h  Help(usage)";
 }
 
@@ -82,7 +82,7 @@ do
 	
 	if [ "${RUN_BACKGROUND}" -eq 1 ]
 	then
-		nohup ./grading_clik.sh ${i}  #> ~/CLIK/log/clikLog_$(date +'%T_%m-%d-%Y').log
+		( ./grading_clik.sh ${i} & )
 	else
 		./grading_clik.sh ${i}
 	fi
