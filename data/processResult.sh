@@ -17,5 +17,5 @@ then
 	RESULT=Pass
 fi
 
-echo ${ASSIGNMENT_NAMES[$4]} 201716422 $1 $2 ${RESULT} $(date +'%T_%m-%d-%Y') >> ~/CLIK/data/$3.csv
+echo ${ASSIGNMENT_NAMES[$4]} $3 $1 $2 ${RESULT} $(date +'%T_%m-%d-%Y') >> ~/CLIK/data/$3.csv
 

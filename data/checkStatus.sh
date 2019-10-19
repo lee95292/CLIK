@@ -11,16 +11,16 @@
 
 
 function divisionLine {
-	echo  "+------------------+-------------+----------------+------------+-----------+---------------------+"
+	echo  "+------------------+-----------------+----------------+------------+-----------+---------------------+"
 }
 
 function header {
 	divisionLine;
-	echo "|    Assignment    | Student ID  |  Instance IP   |  Result    | Pass/Fail | Time                |"
+	echo "|    Assignment    |   Student ID    |  Instance IP   |  Result    | Pass/Fail | Time                |"
 	divisionLine;
 }
 function formatLine() {
-	printf "|%17s |%12s | %13s  | %10s | %9s | %19s |\n" $1 $2 $3 $4 $5 $6
+	printf "|%17s |%16s | %13s  | %10s | %9s | %19s |\n" $1 $2 $3 $4 $5 $6
 	divisionLine;
 }
 
