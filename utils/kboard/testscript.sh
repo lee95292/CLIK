@@ -12,7 +12,6 @@ result=($(cat ${RESULT_FILE}))
 rescount=0
 ./paste;./paste;./paste;./paste;./paste
 
-# Debug Script.
 for ((i=0;i<6;i++))
 do
 	./copy ${input[${i}]}
@@ -25,7 +24,7 @@ done
 
 for ((i=${rescount};i<13;i++))
 do
-	./paste ${input[${i}]}
+	./paste
 	if [ $? = "${result[${rescount}]}" ] 
 	then
 		((correct++))
