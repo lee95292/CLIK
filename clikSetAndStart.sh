@@ -97,8 +97,8 @@ do
 	if [ "${RUN_BACKGROUND}" -eq 1 ]
 	then
 		./grading_clik.sh ${i} & #> ~/CLIK/log/clikLog_$(date +'%T_%m-%d-%Y').log
-	elif
-		./grading_clik ${i}
+	else
+		./grading_clik.sh ${i}
 	fi
 
 	((i++))
