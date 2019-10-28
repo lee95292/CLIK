@@ -76,7 +76,29 @@ echo -e "\n"
 
 export EXAMINATION=${EXAMINATION} ASSIGNMENT_NUMBER=${ASSIGNMENT_NUMBER}
 
-i=2
+echo ${EXAMINATION} > ${CLIK_EXAMFILE}
+
+if [ "${EXAMINATION}" -eq 1 ]
+then
+	case ${ASSIGNMENT_NUMBER} in
+		0)
+			echo "CLIK Daemon: Preparing Inputs and Correct Answers for Assignment 1"
+			#export CORRECT_FILE_USER=~/CLIK/repository/raws/correct_user
+			#export CORRECT_FILE_KERNEL=~/CLIK/repository/raws/correct_kernel
+			~/CLIK/utils/simple_queue/randomFileGenerate.sh exam
+			~/CLIK/utils/simple_queue/testscript.sh ${RANDOM_FILE}_exam ${CORRECT_FILE_USER} ${CORRECT_FILE_KERNEL}
+			;;
+		1)
+			echo ${ASSIGNMENT_NUMBER}
+			;;
+	esac
+	echo "CLIK Daemon: Done!"
+fi
+
+
+echo "CLIK Daemon: Start to judge the student instances"
+
+i=3
 while [ ${i} -le ${NETWORK_RANGE} ];
 do
 	
@@ -90,6 +112,6 @@ do
 	((i++))
 done
 
+EXAMINATION=0
 
-
-
+echo ${EXAMINATION} > ${CLIK_EXAMFILE}

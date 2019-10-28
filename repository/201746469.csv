@@ -1,0 +1,5 @@
+simple_queue 201746469 192.168.0.17 Fail 10:58:42_10-25-2019 DIFF: User 1 Kernel 0
+simple_queue 201746469 192.168.0.17 Fail 11:46:10_10-25-2019 DIFF: User 2983 Kernel 1988
+simple_queue 201746469 192.168.0.17 Fail 11:51:55_10-25-2019 DIFF: User 2 Kernel 995
+simple_queue 201746469 192.168.0.17 Fail 12:16:31_10-25-2019 DIFF: User 2983 Kernel 0
+simple_queue 201746469 192.168.0.17 Fail 12:18:30_10-25-2019 DIFF: User 2 Kernel 0
